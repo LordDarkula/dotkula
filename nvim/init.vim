@@ -10,7 +10,7 @@
 " ------------
 
 " Install vundle by cloning git repository
-command InstallVundle !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+command InstallVundle !git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 
 " necessary options for vundle
 set nocompatible
@@ -132,13 +132,11 @@ let g:netrw_alto = 1
 
 " whitespace hightlighted in white
 highlight ExtraWhitespace ctermbg=yellow guibg=yellow
-au BufWinEnter * silent! 2match ExtraWhitespace /\s\+$/
-" autocmd Syntax * syn match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * silent! 2match ExtraWhitespace /\s\+$/
 
 " tabs highlighted in grey
 highlight Tabs ctermbg=darkgrey guibg=darkgrey
 autocmd BufWinEnter * silent! match Tabs /\t\+$/
-" autocmd Syntax * syn match Tabs /\t\+$/
 
 " Custom Keybindings
 " ------------------
