@@ -119,6 +119,15 @@ set wildignore+=**/*.out/**
 set splitbelow
 set splitright
 
+" Netrw
+" -----
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
+" opens new netrw buffers below and to the right of currently open buffers
+let g:netrw_altv = 1
+let g:netrw_alto = 1
+
 " Highlighting
 " ------------
 

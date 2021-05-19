@@ -76,6 +76,7 @@ if [ $INSTALL_TYPE = "--ssh" ]; then
 	install_vim
 	install_tmux
 fi
+
 if [ $INSTALL_TYPE = "--all" ]; then
 	install_bash
 	install_vim
