@@ -7,6 +7,9 @@
 # =====================================
 # Options: --bash, --dev, --term
 
+# Path Variables
+# --------------
+
 INSTALL_TYPE="$1"
 REPO_DIR=$(pwd)
 CONFIG_DIR="$HOME/.config"
@@ -50,14 +53,14 @@ install_tmux() {
 	create_link "$HOME/.tmux.conf" "$REPO_DIR/tmux/.tmux.conf"
 }
 
-install_zathura() {
-	mkdir -p "$CONFIG_DIR/zathura"
-	create_link "$CONFIG_DIR/zathura/zathurarc" "$REPO_DIR/zathura/zathurarc"
-}
-
 install_alacritty() {
 	mkdir -p "$CONFIG_DIR/alacritty"
 	create_link "$CONFIG_DIR/alacritty/alacritty.yml" "$REPO_DIR/alacritty/alacritty.yml"
+}
+
+install_zathura() {
+	mkdir -p "$CONFIG_DIR/zathura"
+	create_link "$CONFIG_DIR/zathura/zathurarc" "$REPO_DIR/zathura/zathurarc"
 }
 
 install_ranger() {
@@ -67,6 +70,9 @@ install_ranger() {
 	create_link "$CONFIG_DIR/ranger/scope.sh" "$REPO_DIR/ranger/scope.sh"
 }
 
+if [ $INSTALL_TYPE = "--all" ]; then
+	install_bash
+fi
 # Installs ranger and alacritty configuration files
 RANGER_DIR="$HOME/.config/ranger"
 ALACRITTY_DIR="$HOME/.config/alacritty"
