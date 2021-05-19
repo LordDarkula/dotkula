@@ -70,39 +70,14 @@ install_ranger() {
 	create_link "$CONFIG_DIR/ranger/scope.sh" "$REPO_DIR/ranger/scope.sh"
 }
 
+# Installs config files needed for ssh workflow
+if [ $INSTALL_TYPE = "--ssh" ]; then
+	install_bash
+	install_vim
+	install_tmux
+fi
 if [ $INSTALL_TYPE = "--all" ]; then
 	install_bash
-fi
-# Installs ranger and alacritty configuration files
-RANGER_DIR="$HOME/.config/ranger"
-ALACRITTY_DIR="$HOME/.config/alacritty"
-if [ $INSTALL_TYPE = "--term" ]; then
-	mkdir -p "$RANGER_DIR"
-	if [ -f "$RANGER_DIR/rc.conf" ]; then
-		echo "rc.conf exists"
-		echo "Moving rc.conf to rc.conf.old"
-		mv "$RANGER_DIR/rc.conf" "$RANGER_DIR/rc.conf.old"
-	fi
-	if [ -f "$RANGER_DIR/rifle.conf" ]; then
-		echo "rifle.conf exists"
-		echo "Moving rifle.conf to rifle.conf.old"
-		mv "$RANGER_DIR/rifle.conf" "$RANGER_DIR/rifle.conf.old"
-	fi
-	if [ -f "$RANGER_DIR/scope.sh" ]; then
-		echo "scope.sh exists"
-		echo "Moving scope.sh to scope.sh.old"
-		mv "$RANGER_DIR/scope.sh" "$RANGER_DIR/scope.sh.old"
-	fi
-	ln "$PROJECT_DIR/ranger/rc.conf"	"$RANGER_DIR/rc.conf"
-	ln "$PROJECT_DIR/ranger/rifle.conf"	"$RANGER_DIR/rifle.conf"
-	ln "$PROJECT_DIR/ranger/scope.sh"	"$RANGER_DIR/scope.sh"
-
-	mkdir -p "$ALACRITTY_DIR"
-	if [ -f "$ALACRITTY_YML" ]; then
-		echo "alacritty.yml exists"
-		echo "Moving alacritty.yml to alacritty.yml.old"
-		mv "$ALACRITTY_DIR/alacritty.yml" "$ALACRITTY_DIR/alacritty.yml.old"
-	fi
-	ln "$PROJECT_DIR/alacritty/alacritty.yml" "$ALACRITTY_DIR/alacritty.yml"
+	install_vim
 fi
 
