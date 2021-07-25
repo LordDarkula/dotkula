@@ -10,8 +10,11 @@
 # Path Variables
 # --------------
 
+# Argument passed in
 INSTALL_TYPE="$1"
+# Path to dotkula
 REPO_DIR=$(pwd)
+# Path to .config
 CONFIG_DIR="$HOME/.config"
 
 # Paths to dotfile locations
@@ -20,6 +23,9 @@ BASH_PROFILE="$HOME/.bash_profile"
 INPUTRC="$HOME/.inputrc"
 VIMRC="$HOME/.vimrc"
 TMUX_CONF="$HOME/.tmux.conf"
+
+# Helper Functions
+# ----------------
 
 # Links configuration file to proper location
 # Argumens:
@@ -79,6 +85,7 @@ fi
 
 if [ $INSTALL_TYPE = "--all" ]; then
 	install_bash
+	install_tmux
 	install_vim
 fi
 
