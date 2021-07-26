@@ -179,18 +179,19 @@ cd() {
 
 # Upgrade package managers
 upgrade() {
-	if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
-		echo "Updating apt . . ."
-		sudo apt update
-		sudo apt upgrade
-		echo "Updating snaps"
-		sudo snap refresh
-		sudo apt full-upgrade
-	elif [[ "$OSTYPE" =~ "darwin" ]]; then
-		echo "Updating homebrew"
-		brew update
-		brew upgrade
-	fi
+  if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
+    echo "Updating apt..."
+    sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt autoremove -y
+    echo "Updating snaps..."
+    sudo snap refresh
+    sudo apt full-upgrade
+  elif [[ "$OSTYPE" =~ "darwin" ]]; then
+    echo "Updating homebrew..."
+    brew update
+    brew upgrade
+  fi
 }
 
 #   File and process management

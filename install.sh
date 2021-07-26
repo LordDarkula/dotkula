@@ -57,6 +57,7 @@ install_vim() {
 
 install_tmux() {
 	create_link "$HOME/.tmux.conf" "$REPO_DIR/tmux/.tmux.conf"
+	echo "Tmux installed"
 }
 
 install_alacritty() {
@@ -87,5 +88,9 @@ if [ $INSTALL_TYPE = "--all" ]; then
 	install_bash
 	install_tmux
 	install_vim
+fi
+
+if [ $INSTALL_TYPE = "--tmux" ]; then
+	install_tmux
 fi
 
