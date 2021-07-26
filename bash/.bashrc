@@ -84,8 +84,13 @@ export PATH="$HOME/bin:$PATH"
 
 # pyenv
 if [ -d "$HOME/.pyenv" ]; then
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+
+# miniconda
+if [ -d "$HOME/miniconda" ]; then
+  export PATH="$HOME/miniconda/bin:$PATH"
 fi
 
 # GOPATH
@@ -94,61 +99,60 @@ export PATH="${GOPATH//://bin:}/bin:$PATH"
 
 # jenv
 if [ -d "$HOME/.jenv" ]; then
-	export PATH="$HOME/.jenv/bin:$PATH"
+  export PATH="$HOME/.jenv/bin:$PATH"
 fi
 
 
 # rustup
 if [ -d "$HOME/.cargo" ]; then
-	export PATH="$HOME/.cargo/bin:$PATH"
+  export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # tcl-tk
 if [ -d "/usr/local/opt/tcl-tk" ]; then
-	export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
-	export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
-	export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
-	export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
+  export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+  export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
+  export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
+  export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
 fi
 
 # rbenv
 if [ -d "$HOME/.rbenv" ]; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
 
 # icu4c
 if [ -d "/usr/local/opt/icu4c/bin" ]; then
-	export PATH="/usr/local/opt/icu4c/bin:$PATH"
-	export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-
-	export LDFLAGS="-L/usr/local/opt/icu4c/lib"
-	export CPPFLAGS="-I/usr/local/opt/icu4c/include"
-	export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+  export PATH="/usr/local/opt/icu4c/bin:$PATH"
+  export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+  export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+  export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+  export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 fi
 
 # CUDA Toolkit
 if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
-	export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-	export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
+  export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+  export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 fi
 
 # Shims
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
+  eval "$(pyenv init -)"
 fi
 if which pyenv-virtualenv-init > /dev/null; then
-	eval "$(pyenv virtualenv-init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 if which rbenv >  /dev/null 2>&1;  then
   eval "$(rbenv init -)"
 fi
 if which jenv > /dev/null 2>&1; then
-	eval "$(jenv init -)"
+  eval "$(jenv init -)"
 fi
 
 
