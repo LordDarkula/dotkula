@@ -88,9 +88,13 @@ if [ $INSTALL_TYPE = "--all" ]; then
 	install_bash
 	install_tmux
 	install_vim
+	install_alacritty
 fi
 
 if [ $INSTALL_TYPE = "--tmux" ]; then
 	install_tmux
 fi
 
+if [ $INSTALL_TYPE = "--alacritty" ]; then
+	install_alacritty
+fi
