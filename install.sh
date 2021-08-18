@@ -44,6 +44,7 @@ install_bash() {
 	create_link "$HOME/.bash_profile" "$REPO_DIR/bash/.bash_profile"
 	create_link "$HOME/.bashrc" "$REPO_DIR/bash/.bashrc"
 	create_link "$HOME/.inputrc" "$REPO_DIR/bash/.inputrc"
+	echo "Bash config files installed"
 }
 
 install_vim() {
@@ -53,21 +54,25 @@ install_vim() {
 	# install neovim
 	mkdir -p "$CONFIG_DIR/nvim"
 	create_link "$CONFIG_DIR/nvim/init.vim" "$REPO_DIR/nvim/init.vim"
+
+	echo "Vim and Neovim config installed"
 }
 
 install_tmux() {
 	create_link "$HOME/.tmux.conf" "$REPO_DIR/tmux/.tmux.conf"
-	echo "Tmux installed"
+	echo "Tmux conf installed"
 }
 
 install_alacritty() {
 	mkdir -p "$CONFIG_DIR/alacritty"
 	create_link "$CONFIG_DIR/alacritty/alacritty.yml" "$REPO_DIR/alacritty/alacritty.yml"
+	echo "Alacritty yml installed"
 }
 
 install_zathura() {
 	mkdir -p "$CONFIG_DIR/zathura"
 	create_link "$CONFIG_DIR/zathura/zathurarc" "$REPO_DIR/zathura/zathurarc"
+	echo "Zathura rc installed"
 }
 
 install_ranger() {
@@ -75,6 +80,7 @@ install_ranger() {
 	create_link "$CONFIG_DIR/ranger/rc.conf" "$REPO_DIR/ranger/rc.conf"
 	create_link "$CONFIG_DIR/ranger/rifle.conf" "$REPO_DIR/ranger/rifle.conf"
 	create_link "$CONFIG_DIR/ranger/scope.sh" "$REPO_DIR/ranger/scope.sh"
+	echo "Ranger config installed"
 }
 
 # Installs config files needed for ssh workflow
