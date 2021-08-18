@@ -34,8 +34,10 @@ Plugin 'mhinz/vim-startify'
 " auto detect tabs vs spaces
 Plugin 'tpope/vim-sleuth'
 
-" Jellybeans colorscheme
+" colorschemes
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'bluz71/vim-moonfly-colors'
+
 
 Plugin 'itchyny/lightline.vim'
 " Status bar
@@ -69,7 +71,7 @@ set nohlsearch
 
 "set colorscheme
 syntax enable
-colorscheme jellybeans
+colorscheme moonfly
 
 " map leader key to space
 " leader used as a prefix for user keymaps
@@ -88,7 +90,7 @@ let g:startify_change_to_vcs_root = 1
 
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'moonfly',
       \ }
 
 " Rainbow
