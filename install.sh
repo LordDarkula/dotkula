@@ -84,23 +84,31 @@ install_ranger() {
 }
 
 # Installs config files needed for ssh workflow
-if [ $INSTALL_TYPE = "--ssh" ]; then
+if [ $INSTALL_TYPE = "ssh" ]; then
 	install_bash
 	install_vim
 	install_tmux
 fi
 
-if [ $INSTALL_TYPE = "--all" ]; then
+if [ $INSTALL_TYPE = "all" ]; then
+	install_vim
+fi
+
+if [ $INSTALL_TYPE = "all" ]; then
 	install_bash
 	install_tmux
 	install_vim
 	install_alacritty
 fi
 
-if [ $INSTALL_TYPE = "--tmux" ]; then
+if [ $INSTALL_TYPE = "tmux" ]; then
 	install_tmux
 fi
 
-if [ $INSTALL_TYPE = "--alacritty" ]; then
+if [ $INSTALL_TYPE = "bash" ]; then
+	install_bash
+fi
+
+if [ $INSTALL_TYPE = "alacritty" ]; then
 	install_alacritty
 fi
