@@ -52,6 +52,8 @@ Plugin 'itchyny/lightline.vim'
 " Rainbow brackets
 Plugin 'frazrepo/vim-rainbow'
 
+Plugin 'airblade/vim-gitgutter'
+
 call vundle#end()
 filetype plugin indent on
 
