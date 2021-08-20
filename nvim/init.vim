@@ -55,8 +55,6 @@ Plugin 'itchyny/lightline.vim'
 " Rainbow brackets
 Plugin 'frazrepo/vim-rainbow'
 
-Plugin 'airblade/vim-gitgutter'
-
 call vundle#end()
 filetype plugin indent on
 
@@ -93,7 +91,7 @@ let mapleader = " "
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
-" Airline
+" Lightline
 
 set noshowmode
 let g:lightline = {
@@ -187,3 +185,7 @@ noremap <Down> 	<Nop>
 noremap <Left>	<Nop>
 noremap <Right> <Nop>
 
+" Additional Options
+" ------------------
+" auto-reload file after cursor stops moving
+autocmd BufWritePost,CursorHold,CursorHoldI * checktime
