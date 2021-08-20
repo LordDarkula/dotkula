@@ -34,6 +34,9 @@ Plugin 'mhinz/vim-startify'
 " auto detect tabs vs spaces
 Plugin 'tpope/vim-sleuth'
 
+" enhanced terminal integration (cursor shape, mouse)
+Plugin 'wincent/terminus'
+
 " colorschemes
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'bluz71/vim-moonfly-colors'
