@@ -38,6 +38,8 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'bluz71/vim-moonfly-colors'
 
+" advanced highlighting
+Plugin 'sheerun/vim-polyglot'
 
 Plugin 'itchyny/lightline.vim'
 " Status bar
@@ -71,7 +73,7 @@ set nohlsearch
 
 "set colorscheme
 syntax enable
-colorscheme moonfly
+colorscheme jellybeans
 
 " map leader key to space
 " leader used as a prefix for user keymaps
@@ -90,7 +92,7 @@ let g:startify_change_to_vcs_root = 1
 
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'moonfly',
+      \ 'colorscheme': 'jellybeans',
       \ }
 
 " Rainbow
