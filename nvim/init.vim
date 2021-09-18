@@ -44,10 +44,8 @@ Plugin 'bluz71/vim-moonfly-colors'
 " advanced highlighting
 Plugin 'sheerun/vim-polyglot'
 
-Plugin 'itchyny/lightline.vim'
 " Status bar
-"Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 
 " Neovim lsp support
 " Plugin 'nvim-lspconfig'
