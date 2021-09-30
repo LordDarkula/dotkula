@@ -16,4 +16,3 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export QSYS_ROOTDIR="/home/aubhro/intelFPGA_lite/19.1/quartus/sopc_builder/bin"
