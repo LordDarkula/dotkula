@@ -34,6 +34,9 @@ Plugin 'mhinz/vim-startify'
 " auto detect tabs vs spaces
 Plugin 'tpope/vim-sleuth'
 
+" enhanced terminal integration (cursor shape, mouse)
+Plugin 'wincent/terminus'
+
 " colorschemes
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'bluz71/vim-moonfly-colors'
@@ -41,10 +44,8 @@ Plugin 'bluz71/vim-moonfly-colors'
 " advanced highlighting
 Plugin 'sheerun/vim-polyglot'
 
-Plugin 'itchyny/lightline.vim'
 " Status bar
-"Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 
 " Neovim lsp support
 " Plugin 'nvim-lspconfig'
@@ -88,7 +89,7 @@ let mapleader = " "
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
-" Airline
+" Lightline
 
 set noshowmode
 let g:lightline = {
@@ -182,3 +183,7 @@ noremap <Down> 	<Nop>
 noremap <Left>	<Nop>
 noremap <Right> <Nop>
 
+" Additional Options
+" ------------------
+" auto-reload file after cursor stops moving
+autocmd BufWritePost,CursorHold,CursorHoldI * checktime

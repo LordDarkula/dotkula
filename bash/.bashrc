@@ -155,15 +155,38 @@ if which jenv > /dev/null 2>&1; then
   eval "$(jenv init -)"
 fi
 
+# Environment Variables and Aliases
+# ---------------------------------
 
 # Ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+alias c='clear'
+alias u='upgrade'
+alias la='ls -la'
+alias mkdir='mkdir -pv'
+alias r='ranger'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias which='type -all'
+alias path='echo -e ${PATH//:/\\n}'
+alias ll='ls -FGlAhp'
+alias less='less -FSRXc'
+
+# cd modifiers
+# Go back 1 directory level
+alias cd..='cd ../'
+# Go back 2 directory levels
+alias cd...='cd ../../'
+# Go back 3 directory levels
+alias cd....='cd ../../../'
+
 
 
 # Functions
 # ---------
 
-# Reassign ls to ls -la for additional information about files
+# Reassign ls to ls -a for additional information about files
 ls() {
 	if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
 		/bin/ls -a --color=auto "$@"
@@ -201,118 +224,82 @@ upgrade() {
 #   File and process management
 #   ----------------------------------------------------------------------------
 
-    # Zip recursively
-    zipf () {
-        zip -r "$1".zip "$1" ;
-    }
+# Zip recursively
+zipf () {
+    zip -r "$1".zip "$1" ;
+}
 
-    # Extract most packages with one command
-    extract () {
-        if [ -f $1 ] ; then
-          case $1 in
-            *.tar.bz2)   tar xjf $1     ;;
-            *.tar.gz)    tar xzf $1     ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xf $1      ;;
-            *.tbz2)      tar xjf $1     ;;
-            *.tgz)       tar xzf $1     ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)     echo "'$1' cannot be extracted via extract()" ;;
-             esac
-         else
-             echo "'$1' is not a valid file"
-         fi
-    }
+# Extract most packages with one command
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
 
-    # Move a file to the trash
-    trash () {
-        if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
-            command mv "$@" $HOME/.local/share/Trash
-        else
-            command mv "$@" ~/.Trash
-        fi
+# Move a file to the trash
+trash () {
+    if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
+        command mv "$@" $HOME/.local/share/Trash
+    else
+        command mv "$@" ~/.Trash
+    fi
 
-    }
+}
 
-    # List all active processes
-    myps() {
-        ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ;
-    }
+# List all active processes
+myps() {
+    ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ;
+}
 
 #   Networking
 #   ----------------------------------------------------------------------------
 
-    # Disply local ip
-    localip() {
-        if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
-            ipString="$(hostname -I)"
-            ipArray=($ipString)
-            echo $ipArray
-        elif [[ "$OSTYPE" = *"darwin"* ]]; then
-            ipString="$(ifconfig | grep "inet " | grep -v 127.0.0.1)"
-            ipArray=($ipString)
-            echo ${ipArray[1]}
-        fi
-    }
+# Disply local ip
+localip() {
+    if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
+        ipString="$(hostname -I)"
+        ipArray=($ipString)
+        echo $ipArray
+    elif [[ "$OSTYPE" = *"darwin"* ]]; then
+        ipString="$(ifconfig | grep "inet " | grep -v 127.0.0.1)"
+        ipArray=($ipString)
+        echo ${ipArray[1]}
+    fi
+}
 
-    # Display Public facing IP Address
-    publicip() {
-        curl ifconfig.me
-    }
+# Display Public facing IP Address
+publicip() {
+    curl ifconfig.me
+}
 
-    # Display useful host related informaton
-    ii() {
-        echo -e "\nYou are logged on ${RED}$HOST"
-        echo -e "\nAdditionnal information:$NC " ; uname -a
-        echo -e "\n${RED}Users logged on:$NC " ; w -h
-        echo -e "\n${RED}Current date :$NC " ; date
-        echo -e "\n${RED}Machine stats :$NC " ; uptime
-        echo -e "\n${RED}Current network location :$NC " ; scselect
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
-        # echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
-        if ping -q -c 1 -W 1 google.com >/dev/null; then
-            echo "The network is up"
-        else
-            echo "The network is down"
-        fi
-    }
-
-
-# Aliases
-# -------
-
-alias c='clear'
-alias u='upgrade'
-alias la='ls -la'
-alias mkdir='mkdir -pv'
-alias r='ranger'
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias which='type -all'
-alias path='echo -e ${PATH//:/\\n}'
-alias ll='ls -FGlAhp'
-alias less='less -FSRXc'
-
-    # cd modifiers
-    alias ~="cd ~"                              # ~:            Go Home
-    alias cd..='cd ../'                         # Go back 1 directory level
-    alias ..='cd ../'                           # Go back 1 directory level
-    alias ...='cd ../../'                       # Go back 2 directory levels
-    alias .3='cd ../../../'                     # Go back 3 directory levels
-    alias .4='cd ../../../../'                  # Go back 4 directory levels
-    alias .5='cd ../../../../../'               # Go back 5 directory levels
-    alias .6='cd ../../../../../../'            # Go back 6 directory levels
-
-    alias show_options='shopt'                  # Show_options: display bash options settings
-    alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
-    alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
-    mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
-    ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
-    alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
-
-
-export QSYS_ROOTDIR="/home/aubhro/intelFPGA_lite/19.1/quartus/sopc_builder/bin"
+# Display useful host related informaton
+ii() {
+    echo -e "\nYou are logged on ${RED}$HOST"
+    echo -e "\nAdditionnal information:$NC " ; uname -a
+    echo -e "\n${RED}Users logged on:$NC " ; w -h
+    echo -e "\n${RED}Current date :$NC " ; date
+    echo -e "\n${RED}Machine stats :$NC " ; uptime
+    echo -e "\n${RED}Current network location :$NC " ; scselect
+    echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+    # echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
+    if ping -q -c 1 -W 1 google.com >/dev/null; then
+        echo "The network is up"
+    else
+        echo "The network is down"
+    fi
+}
