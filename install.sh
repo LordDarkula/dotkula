@@ -63,6 +63,14 @@ install_tmux() {
 	echo "Tmux conf installed"
 }
 
+# install additional powerline fonts
+install_fonts() {
+	git clone https://github.com/powerline/fonts.git
+	cd fonts
+	./install.sh
+	cd ..
+}
+
 install_alacritty() {
 	mkdir -p "$CONFIG_DIR/alacritty"
 	create_link "$CONFIG_DIR/alacritty/alacritty.yml" "$REPO_DIR/alacritty/alacritty.yml"
