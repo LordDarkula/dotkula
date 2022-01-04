@@ -172,6 +172,7 @@ alias which='type -all'
 alias path='echo -e ${PATH//:/\\n}'
 alias ll='ls -FGlAhp'
 alias less='less -FSRXc'
+alias refresh='exec $SHELL'
 
 # cd modifiers
 # Go back 1 directory level
