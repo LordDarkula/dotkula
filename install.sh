@@ -97,19 +97,26 @@ if [ $INSTALL_TYPE = "ssh" ]; then
 	install_tmux
 fi
 
+# Installs config files for desktop
 if [ $INSTALL_TYPE = "all" ]; then
 	install_bash
 	install_tmux
 	install_vim
 	install_alacritty
+	install_zathura
+fi
+
+# Install configs individually
+if [ $INSTALL_TYPE = "bash" ]; then
+	install_bash
+fi
+
+if [ $INSTALL_TYPE = "vim" ]; then
+	install_vim
 fi
 
 if [ $INSTALL_TYPE = "tmux" ]; then
 	install_tmux
-fi
-
-if [ $INSTALL_TYPE = "bash" ]; then
-	install_bash
 fi
 
 if [ $INSTALL_TYPE = "zsh" ]; then
@@ -119,3 +126,4 @@ fi
 if [ $INSTALL_TYPE = "alacritty" ]; then
 	install_alacritty
 fi
+
