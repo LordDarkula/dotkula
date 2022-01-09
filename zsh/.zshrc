@@ -78,7 +78,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages colorize cp extract ssh-agent sublime tmux pip)
+plugins=(git colored-man-pages colorize cp extract ssh-agent sublime tmux pip zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,4 +110,5 @@ fi
 alias c="clear"
 alias la='ls -la'
 alias refresh="exec $SHELL"
+alias coruscant="cd /Volumes/Coruscant/"
 

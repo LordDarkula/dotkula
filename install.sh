@@ -17,12 +17,6 @@ REPO_DIR=$(pwd)
 # Path to .config
 CONFIG_DIR="$HOME/.config"
 
-# Paths to dotfile locations
-BASHRC="$HOME/.bashrc"
-BASH_PROFILE="$HOME/.bash_profile"
-INPUTRC="$HOME/.inputrc"
-VIMRC="$HOME/.vimrc"
-TMUX_CONF="$HOME/.tmux.conf"
 
 # Helper Functions
 # ----------------
@@ -45,6 +39,11 @@ install_bash() {
 	create_link "$HOME/.bashrc" "$REPO_DIR/bash/.bashrc"
 	create_link "$HOME/.inputrc" "$REPO_DIR/bash/.inputrc"
 	echo "Bash config files installed"
+}
+
+install_zsh() {
+	create_link "$HOME/.zshrc" "$REPO_DIR/zsh/.zshrc"
+	echo "Zsh config files installed"
 }
 
 install_vim() {
@@ -111,6 +110,10 @@ fi
 
 if [ $INSTALL_TYPE = "bash" ]; then
 	install_bash
+fi
+
+if [ $INSTALL_TYPE = "zsh" ]; then
+	install_zsh
 fi
 
 if [ $INSTALL_TYPE = "alacritty" ]; then
