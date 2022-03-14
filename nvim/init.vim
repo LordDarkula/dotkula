@@ -34,6 +34,9 @@ Plugin 'mhinz/vim-startify'
 " auto detect tabs vs spaces
 Plugin 'tpope/vim-sleuth'
 
+" TODO: add vim-rooter
+" TODO: ADD FZF
+
 " enhanced terminal integration (cursor shape, mouse)
 Plugin 'wincent/terminus'
 
@@ -142,6 +145,9 @@ autocmd BufWinEnter * silent! 2match ExtraWhitespace /\s\+$/
 " tabs highlighted in grey
 highlight Tabs ctermbg=darkgrey guibg=darkgrey
 autocmd BufWinEnter * silent! match Tabs /\t\+$/
+
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
 " Custom Keybindings
 " ------------------
