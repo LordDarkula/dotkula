@@ -146,6 +146,7 @@ autocmd BufWinEnter * silent! 2match ExtraWhitespace /\s\+$/
 highlight Tabs ctermbg=darkgrey guibg=darkgrey
 autocmd BufWinEnter * silent! match Tabs /\t\+$/
 
+" lines longer than 80 chars highlighted on char 81
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
@@ -155,8 +156,6 @@ call matchadd('ColorColumn', '\%81v', 100)
 " scroll up and down with Control+(k/j)
 nnoremap <C-J> <C-d>
 nnoremap <C-K> <C-u>
-
-autocmd FileType c,cpp,java silent! nnoremap { {}<Left>
 
 " buffers
 " open buffer list

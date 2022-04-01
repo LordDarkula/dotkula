@@ -1,0 +1,37 @@
+# Zathura configuration file
+# See man `man zathurarc'
+
+# Open document in fit-width mode by default
+set adjust-open "width"
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+
+set page-padding 1
+
+# Open document in inverted color
+set recolor
+
+map u scroll half-up
+map d scroll half-down
+map i recolor
+map p print
+unmap r
+map r rotate
+map R reload
+
+set statusbar-bg "#FF6600"
+set statusbar-fg "#FFFFFF"
+set inputbar-fg "#FF6600"
+
+# One page per row by default
+set pages-per-row 1
+
+set font "inconsolata 16"
+
+set selection-clipboard clipboard
+
+#stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
