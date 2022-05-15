@@ -6,58 +6,58 @@
 " =====================================
 
 
-" Vundle Setup
+" dein Setup
 " ------------
+if &compatible
+  set nocompatible " Be iMproved
+endif
 
-" Install vundle by cloning git repository
-command InstallVundle !git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+" Required:
+" Add the dein installation directory into runtimepath
+set runtimepath+={path to dein.vim directory}
 
-" necessary options for vundle
-set nocompatible
-filetype off
+" Required:
+call dein#begin({path to plugin base path directory})
 
-" Put vundle runtime path in neovim config folder
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+" Let dein manage dein
+call dein#add({path to dein.vim directory})
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-" My plugins
-" ----------
+" Add or remove your plugins here like this:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
 
 " sensible defaults above set nocompatible
-Plugin 'tpope/vim-sensible'
-
-" Custom start page
-Plugin 'mhinz/vim-startify'
+call dein#add('tpope/vim-sensible')
 
 " auto detect tabs vs spaces
-Plugin 'tpope/vim-sleuth'
+call dein#add('tpope/vim-sleuth')
 
-" TODO: add vim-rooter
-" TODO: ADD FZF
-
-" enhanced terminal integration (cursor shape, mouse)
-Plugin 'wincent/terminus'
-
-" colorschemes
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'bluz71/vim-moonfly-colors'
+" colorscheme
+call dein#add('nanotech/jellybeans.vim')
 
 " advanced highlighting
-Plugin 'sheerun/vim-polyglot'
-
-" Status bar
-Plugin 'itchyny/lightline.vim'
-
-" Neovim lsp support
-" Plugin 'nvim-lspconfig'
+call dein#add('sheerun/vim-polyglot')
 
 " Rainbow brackets
-Plugin 'frazrepo/vim-rainbow'
+call dein#add('frazrepo/vim-rainbow')
 
-call vundle#end()
+" Status bar
+call dein#add('itchyny/lightline.vim')
+
+" Telescope (fuzzy file finding)
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim')
+
+" Required:
+call dein#end()
+
+" Required:
 filetype plugin indent on
+syntax enable
 
 " Basic Options
 " -------------
@@ -76,7 +76,6 @@ set number
 set nohlsearch
 
 "set colorscheme
-syntax enable
 colorscheme jellybeans
 
 " map leader key to space
@@ -85,12 +84,6 @@ let mapleader = " "
 
 " Plugin setup
 " ------------
-
-" Startify
-
-" Do not change to directory when opening a file from startify
-let g:startify_change_to_dir = 0
-let g:startify_change_to_vcs_root = 1
 
 " Lightline
 

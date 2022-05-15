@@ -50,11 +50,15 @@ install_vim() {
 	# install vim
 	create_link "$HOME/.vimrc" "$REPO_DIR/vim/.vimrc"
 
+	echo "Vim config installed"
+}
+
+install_nvim() {
 	# install neovim
 	mkdir -p "$CONFIG_DIR/nvim"
 	create_link "$CONFIG_DIR/nvim/init.vim" "$REPO_DIR/nvim/init.vim"
 
-	echo "Vim and Neovim config installed"
+	echo "NeoVim config installed"
 }
 
 install_tmux() {
@@ -94,6 +98,7 @@ if [ $INSTALL_TYPE = "all" ]; then
 	install_bash
 	install_tmux
 	install_vim
+	install_nvim
 	install_alacritty
 	install_zathura
 fi
@@ -105,6 +110,10 @@ fi
 
 if [ $INSTALL_TYPE = "vim" ]; then
 	install_vim
+fi
+
+if [ $INSTALL_TYPE = "nvim" ]; then
+	install_nvim
 fi
 
 if [ $INSTALL_TYPE = "tmux" ]; then
