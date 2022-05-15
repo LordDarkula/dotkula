@@ -101,9 +101,12 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
 
   # homebrew
   export PATH="/usr/local/bin:$PATH"
-#  export PATH="/usr/local/sbin:$PATH"
-#  export PATH="$HOME/bin:$PATH"
+
+  # anaconda
   export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+
+  # openjdk
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
