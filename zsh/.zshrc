@@ -122,7 +122,7 @@ else
 fi
 
 # Show hidden files when doing fzf searches
-export FZF_DEFAULT_COMMAND='find .'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
