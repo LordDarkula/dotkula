@@ -33,9 +33,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 
-" Telescope (fuzzy file finding)
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -108,6 +107,10 @@ let g:rainbow_active = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
+" FZF
+
+let g:fzf_preview_window = ['right:40%', 'ctrl-/']
+
 
 " Multiple Files
 " -------------
@@ -163,9 +166,9 @@ nnoremap <leader>a :ls<CR>
 " open netrw
 nnoremap <leader>e :Explore<CR>
 " open new buffer with find
-nnoremap <leader>f :find<Space>
+nnoremap <leader>f :Files<CR>
 " switch buffers
-nnoremap <leader>b :b<Space>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>N :bprev<CR>
 " close currently open buffer

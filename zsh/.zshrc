@@ -121,6 +121,9 @@ else
   export EDITOR='nvim'
 fi
 
+# Show hidden files when doing fzf searches
+export FZF_DEFAULT_COMMAND='find .'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
