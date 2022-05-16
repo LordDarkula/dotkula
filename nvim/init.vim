@@ -6,56 +6,39 @@
 " =====================================
 
 
-" dein Setup
+" vim-plug Setup
 " ------------
 if &compatible
   set nocompatible " Be iMproved
 endif
 
-" Required:
-" Add the dein installation directory into runtimepath
-set runtimepath+={path to dein.vim directory}
-
-" Required:
-call dein#begin({path to plugin base path directory})
-
-" Let dein manage dein
-call dein#add({path to dein.vim directory})
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-
-" Add or remove your plugins here like this:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
+call plug#begin()
 
 " sensible defaults above set nocompatible
-call dein#add('tpope/vim-sensible')
+Plug 'tpope/vim-sensible'
 
 " auto detect tabs vs spaces
-call dein#add('tpope/vim-sleuth')
+Plug 'tpope/vim-sleuth'
 
 " colorscheme
-call dein#add('nanotech/jellybeans.vim')
+Plug 'nanotech/jellybeans.vim'
 
 " advanced highlighting
-call dein#add('sheerun/vim-polyglot')
+Plug 'sheerun/vim-polyglot'
 
 " Rainbow brackets
-call dein#add('frazrepo/vim-rainbow')
+Plug 'frazrepo/vim-rainbow'
 
 " Status bar
-call dein#add('itchyny/lightline.vim')
+Plug 'itchyny/vim-gitbranch'
+Plug 'itchyny/lightline.vim'
 
 " Telescope (fuzzy file finding)
-call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim')
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-" Required:
-call dein#end()
+call plug#end()
 
-" Required:
 filetype plugin indent on
 syntax enable
 
@@ -90,7 +73,31 @@ let mapleader = " "
 set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'filetype', 'lineinfo' ] ],
+      \	  'right': [ ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'GitBranchTruncated',
+      \	  'filename': 'LightlineFilename',
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'filename', 'lineinfo' ] ],
+      \	  'right': [ ],
+      \ },
       \ }
+
+function! GitBranchTruncated()
+  return gitbranch#name()[0:7]
+endfunction
+
+" combined filename and modified status
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? '[+]' : ''
+  return modified[0:30] . filename
+endfunction
 
 " Rainbow
 
