@@ -109,10 +109,8 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 " FZF
 
-let g:fzf_preview_window = ['right:40%', 'ctrl-/']
-
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_layout = {'down': '40%'}
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --ignore-vcs --hidden --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -172,6 +170,8 @@ call matchadd('ColorColumn', '\%81v', 100)
 " scroll up and down with Control+(k/j)
 nnoremap <C-J> <C-d>
 nnoremap <C-K> <C-u>
+
+nnoremap <leader>m :<C-u>marks<CR>:normal! `
 
 " buffers
 " open buffer list

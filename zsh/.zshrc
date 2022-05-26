@@ -121,6 +121,9 @@ else
   export EDITOR='nvim'
 fi
 
+# bat pager options
+export BAT_THEME='TwoDark'
+
 # Show hidden files when doing fzf searches
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
