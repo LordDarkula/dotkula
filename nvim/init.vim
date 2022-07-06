@@ -185,7 +185,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>N :bprev<CR>
 " close currently open buffer
-nnoremap <leader>q :bd<CR>
+nnoremap <leader>q <C-W>q
 
 " window splitting
 nnoremap <leader>sp :Sexplore<CR>
