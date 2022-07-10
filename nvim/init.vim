@@ -32,6 +32,7 @@ Plug 'frazrepo/vim-rainbow'
 " Status bar
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -46,6 +47,15 @@ syntax enable
 
 " Do not use swap file to avoid conflicts
 set noswapfile
+set undofile
+set nobackup
+set nowritebackup
+
+set cursorline
+set autoread
+set autowrite
+
+set noshowmode
 
 " if hard tabs are used, show them as 2 spaces
 set tabstop=2
@@ -53,9 +63,11 @@ set shiftwidth=2
 
 " line numbers
 set number
+set relativenumber
 
 " do not highlight search
-set nohlsearch
+set hlsearch
+set ignorecase
 
 "set colorscheme
 colorscheme jellybeans
@@ -85,6 +97,16 @@ let g:lightline = {
       \   'left': [ [ 'filename', 'lineinfo' ] ],
       \	  'right': [ ],
       \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
       \ }
 
 function! GitBranchTruncated()
@@ -182,8 +204,8 @@ nnoremap <leader>e :Explore<CR>
 nnoremap <leader>f :Files<CR>
 " switch buffers
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>n :bnext<CR>
-nnoremap <leader>N :bprev<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :bprev<CR>
 " close currently open buffer
 nnoremap <leader>q <C-W>q
 
@@ -203,8 +225,3 @@ noremap <Up>		<Nop>
 noremap <Down> 	<Nop>
 noremap <Left>	<Nop>
 noremap <Right> <Nop>
-
-" Additional Options
-" ------------------
-" auto-reload file after cursor stops moving
-autocmd BufWritePost,CursorHold,CursorHoldI * checktime
