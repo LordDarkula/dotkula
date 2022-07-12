@@ -69,6 +69,9 @@ set relativenumber
 set hlsearch
 set ignorecase
 
+" always show currently open tabs
+set showtabline=2
+
 "set colorscheme
 colorscheme jellybeans
 
