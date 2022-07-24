@@ -34,6 +34,8 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
+Plug 'preservim/tagbar'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -45,16 +47,25 @@ syntax enable
 " Basic Options
 " -------------
 
-" Do not use swap file to avoid conflicts
+" swapfile stores changes before saving so they can be recovered if unsaved
+" however, they can cause conflicts. I save my changes regularly so it is
+" unneeded
 set noswapfile
+" undofile stores change history so they can be reverted after saving
+" and closing vim
 set undofile
 set nobackup
 set nowritebackup
 
+" highlight line of cursor so it can be seen at all times
 set cursorline
+
+" when file is changed by external source, reload it in vim
 set autoread
+" autowrite current buffer when switching buffers
 set autowrite
 
+" mode is show in status bar and is not needed to be shown on last line
 set noshowmode
 
 " if hard tabs are used, show them as 2 spaces
@@ -65,8 +76,9 @@ set shiftwidth=2
 set number
 set relativenumber
 
-" do not highlight search
+" highlight / searches
 set hlsearch
+" ignore case in / searches
 set ignorecase
 
 " always show currently open tabs
@@ -211,6 +223,9 @@ nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 " close currently open buffer
 nnoremap <leader>q <C-W>q
+
+" tagbar
+nnoremap <leader>t :TagbarToggle<CR>
 
 " window splitting
 nnoremap <leader>sp :Sexplore<CR>
