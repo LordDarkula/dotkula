@@ -193,6 +193,9 @@ call matchadd('ColorColumn', '\%81v', 100)
 nnoremap <C-J> <C-d>
 nnoremap <C-K> <C-u>
 
+nnoremap J ddp
+nnoremap K ddkP
+
 nnoremap <leader>m :<C-u>marks<CR>:normal! `
 
 " buffers
