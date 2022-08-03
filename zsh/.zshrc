@@ -107,6 +107,7 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
 
   # openjdk
   export PATH="/usr/local/opt/openjdk/bin:$PATH"
+  export JAVA_HOME="/usr/local/opt/java/libexec/openjdk.jdk"
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
