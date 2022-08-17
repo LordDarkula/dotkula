@@ -1,43 +1,111 @@
 " =====================================
-" Vim Configuration
 " Author: Aubhro Sengupta (lorddarkula)
+" Vim Configuration
 " Email: hello@aubhro.com
 " Website: https://aubhro.me
 " =====================================
 
 
-" Basic options
+" No Plugins
+" ----------
+" enable netrw and file type detection
+filetype plugin on
+" turn on basic syntax highlighting
+syntax on
+
+
+" Basic Options
 " -------------
 
 " turns off legacy vi support
 set nocompatible
-" auto-detect filetype
-filetype on
-" allow backspace over autoindents, line breaks, start of indent
+
+" allow backspace over indents, line breaks, start of indent
 set backspace=indent,eol,start
+
+" disallow cursor from going to first or last line on screen
+set scrolloff=1
+
 " disable bells
 set noerrorbells
-set vb
-" start searching while typing
-set incsearch
-" colors
-syntax enable
-" enable netrw and file type detection
-filetype plugin on
+set novisualbell
+
+" when file is changed by external source, reload it in vim
+set autoread
+" autowrite current buffer when switching buffers
+set autowrite
+
+
+" Indentation
+" -----------
+
+" turn on autoindent
+set autoindent
+" smarter automatic indenting
+set smartindent
+" stricter indent specifically for c
+autocmd FileType c,cpp silent! set cindent
+
+
+" Tabs and Spaces
+" ---------------
+
+" Scenario 4 in :help tabstop
+" Insert hard tabs by default (shows up as 2 spaces)
+" However, if the file already uses spaces, stick to them
+set tabstop=2
+set noexpandtab
+set shiftwidth=2
+set smarttab
+
+
+" External Files
+" --------------
+
+" swapfile stores changes before saving so they can be recovered if unsaved
+" however, they can cause conflicts if vim quits unexpectedly.
+" I save my changes regularly so it is unneeded
+" Opening multiple buffers also litters the filesystem with swapfiles.
+set noswapfile
+
+" undofile stores change history so they can be reverted after saving
+" and closing vim
+set undofile
+
+" backups slow down vim and are made redundant by version control
+set nobackup
+set nowritebackup
+
 
 " Appearance
 " ----------
 
 " line numbers
 set number relativenumber
-" enable cursor line
+
+" highlight line of cursor so it can be seen at all times
 set cursorline
+
+" mode is show in status bar and is not needed to be shown on last line
+set noshowmode
+
 " use jellybeans if installed or else use elflord
 try
 	colorscheme jellybeans
 catch
 	colorscheme elflord
 endtry
+
+" Search
+" ------
+
+" start searching while typing
+set incsearch
+" highlight / searches
+set hlsearch
+" ignore case in / searches
+set ignorecase
+
 
 " Status Line
 " -----------
@@ -77,30 +145,6 @@ set statusline+=%=
 " place in the file
 set statusline+=\ %P
 
-" Indentation
-" -----------
-
-" turn on autoindent
-set autoindent
-" smarter automatic indenting
-set smartindent
-" stricter indent specifically for c
-autocmd FileType c,cpp silent! set cindent
-
-" Tabs and Spaces
-" ---------------
-
-" tabs show as 4 spaces by
-set tabstop=2
-" tabs are hard tabs
-set noexpandtab
-" shift > is equal to 4 spaces
-set shiftwidth=2
-" newline tabs and backspaces will be equivalent to shiftwidth
-set smarttab
-
-" file specific settings
-autocmd FileType py,pyw,python silent! set expandtab tabstop=4 shiftwidth=4
 
 " Multiple Files
 " -------------
@@ -183,13 +227,4 @@ noremap <Up>	<Nop>
 noremap <Down> 	<Nop>
 noremap <Left>	<Nop>
 noremap <Right> <Nop>
-
-" Additional Options
-" ------------------
-" auto-reload file after cursor stops moving
-au CursorHold,CursorHoldI * checktime
-
-" rename tmux tab name to filename
-autocmd BufEnter,BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%:t"))
-autocmd BufLeave,BufWinLeave * call system("tmux rename-window $(basename $SHELL)")
 

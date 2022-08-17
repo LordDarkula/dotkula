@@ -6,8 +6,9 @@
 " =====================================
 
 
-" vim-plug Setup
-" ------------
+" Vim-plug Setup
+" --------------
+
 if &compatible
   set nocompatible " Be iMproved
 endif
@@ -44,48 +45,102 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 
+
 " Basic Options
 " -------------
 
-" swapfile stores changes before saving so they can be recovered if unsaved
-" however, they can cause conflicts. I save my changes regularly so it is
-" unneeded
-set noswapfile
-" undofile stores change history so they can be reverted after saving
-" and closing vim
-set undofile
-set nobackup
-set nowritebackup
+" turns off legacy vi support
+set nocompatible
 
-" highlight line of cursor so it can be seen at all times
-set cursorline
+" allow backspace over indents, line breaks, start of indent
+set backspace=indent,eol,start
+
+" disallow cursor from going to first or last line on screen
+set scrolloff=1
+
+" disable bells
+set noerrorbells
+set novisualbell
 
 " when file is changed by external source, reload it in vim
 set autoread
 " autowrite current buffer when switching buffers
 set autowrite
 
+
+" Indentation
+" -----------
+
+" turn on autoindent
+set autoindent
+" smarter automatic indenting
+set smartindent
+" stricter indent specifically for c
+autocmd FileType c,cpp silent! set cindent
+
+
+" Tabs and Spaces
+" ---------------
+
+" Scenario 4 in :help tabstop
+" Insert hard tabs by default (shows up as 2 spaces)
+" However, if the file already uses spaces, stick to them
+set tabstop=2
+set noexpandtab
+set shiftwidth=2
+set smarttab
+
+" External Files
+" --------------
+
+" swapfile stores changes before saving so they can be recovered if unsaved
+" however, they can cause conflicts if vim quits unexpectedly.
+" I save my changes regularly so it is unneeded
+" Opening multiple buffers also litters the filesystem with swapfiles.
+set noswapfile
+
+" undofile stores change history so they can be reverted after saving
+" and closing vim
+set undofile
+
+" backups slow down vim and are made redundant by version control
+set nobackup
+set nowritebackup
+
+
+" Appearance
+" ----------
+
+" line numbers
+set number relativenumber
+
+" highlight line of cursor so it can be seen at all times
+set cursorline
+
 " mode is show in status bar and is not needed to be shown on last line
 set noshowmode
 
-" if hard tabs are used, show them as 2 spaces
-set tabstop=2
-set shiftwidth=2
+" use jellybeans if installed or else use elflord
+try
+  colorscheme jellybeans
+catch
+  colorscheme elflord
+endtry
 
-" line numbers
-set number
-set relativenumber
 
+" Search
+" ------
+
+" start searching while typing
+set incsearch
 " highlight / searches
 set hlsearch
 " ignore case in / searches
 set ignorecase
 
-" always show currently open tabs
-set showtabline=2
+" show tabs if there are multiple tabs
+set showtabline=1
 
-"set colorscheme
-colorscheme jellybeans
 
 " map leader key to space
 " leader used as a prefix for user keymaps
@@ -246,3 +301,4 @@ noremap <Up>		<Nop>
 noremap <Down> 	<Nop>
 noremap <Left>	<Nop>
 noremap <Right> <Nop>
+
