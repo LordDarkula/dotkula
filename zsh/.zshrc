@@ -100,15 +100,28 @@ source $ZSH/oh-my-zsh.sh
 # macOS paths
 if [[ "$OSTYPE" = *"darwin"* ]]; then
 
-  # homebrew
-  export PATH="/usr/local/bin:$PATH"
+  # Apple Silicon
+  if [[ "$(uname -m)" = *"arm64"* ]]; then
+    # homebrew
+    export PATH="/opt/homebrew/bin:$PATH"
 
-  # anaconda
-  export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    # java
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+    export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+  else
 
-  # openjdk
-  export PATH="/usr/local/opt/openjdk/bin:$PATH"
-  export JAVA_HOME="/usr/local/opt/java/libexec/openjdk.jdk"
+    # Intel
+
+    # homebrew
+    export PATH="/usr/local/bin:$PATH"
+
+    # java
+    export PATH="/usr/local/opt/openjdk/bin:$PATH"
+    export JAVA_HOME="/usr/local/opt/java/libexec/openjdk.jdk"
+
+    # anaconda
+    export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+  fi
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
@@ -144,20 +157,4 @@ alias c="clear"
 alias la='ls -la'
 alias refresh="exec $SHELL"
 alias coruscant="cd /Volumes/Coruscant/"
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
