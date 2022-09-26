@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ "$OSTYPE" = *"darwin"* ]]; then
   
   # add ssh key
-  ssh-add -K ~/.ssh/id_ed25519
+  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
   # Apple Silicon
   if [[ "$(uname -m)" = *"arm64"* ]]; then
