@@ -106,7 +106,7 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
   # Apple Silicon
   if [[ "$(uname -m)" = *"arm64"* ]]; then
     # homebrew
-    export PATH="/opt/homebrew/bin:$PATH"
+    export PATH="/opt/homebrew/opt:$PATH"
 
     # java
     export JAVA_HOME="/opt/homebrew/opt/openjdk@11"

@@ -43,13 +43,12 @@ install_bash() {
 
 install_zsh() {
 	create_link "$HOME/.zshrc" "$REPO_DIR/zsh/.zshrc"
+	create_link "$HOME/.zprofile" "$REPO_DIR/zsh/.zprofile"
 	echo "Zsh config files installed"
 }
 
 install_vim() {
-	# install vim
 	create_link "$HOME/.vimrc" "$REPO_DIR/vim/.vimrc"
-
 	echo "Vim config installed"
 }
 
