@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 
 # macOS paths
 if [[ "$OSTYPE" = *"darwin"* ]]; then
-  
+
   # add ssh key
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
@@ -121,6 +121,10 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
     # java
     export PATH="/usr/local/opt/openjdk/bin:$PATH"
     export JAVA_HOME="/usr/local/opt/java/libexec/openjdk.jdk"
+
+    # pyenv
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
     # anaconda
     export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
@@ -145,6 +149,8 @@ export BAT_THEME='TwoDark'
 # Show hidden files when doing fzf searches
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+export LINEAPY_DO_NOT_TRACK=true
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -161,3 +167,6 @@ alias la='ls -la'
 alias refresh="exec $SHELL"
 alias coruscant="cd /Volumes/Coruscant/"
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
