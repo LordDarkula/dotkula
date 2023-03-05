@@ -4,5 +4,3 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
 	fi
 fi
 
-eval "$(ssh-agent -s)"
-
