@@ -8,6 +8,7 @@
 
 " No Plugins
 " ----------
+
 " enable netrw and file type detection
 filetype plugin on
 " turn on basic syntax highlighting
@@ -44,7 +45,7 @@ set autoindent
 " smarter automatic indenting
 set smartindent
 " stricter indent specifically for c
-autocmd FileType c,cpp silent! set cindent
+autocmd FileType h,c,cc,cpp silent! set cindent
 
 
 " Tabs and Spaces
@@ -176,7 +177,7 @@ let g:netrw_alto = 1
 " ------------
 
 " Highlight mutt config files
-au BufRead,BufNewFile *.muttrc,*.mutt set filetype=muttrc
+autocmd BufRead,BufNewFile *.muttrc,*.mutt set filetype=muttrc
 
 " whitespace hightlighted in white
 highlight ExtraWhitespace ctermbg=white guibg=white
