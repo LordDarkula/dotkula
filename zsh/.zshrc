@@ -151,6 +151,7 @@ export BAT_THEME='TwoDark'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 export LINEAPY_DO_NOT_TRACK=true
+export TWINE_HOME="$HOME/Workspaces/twine/"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
