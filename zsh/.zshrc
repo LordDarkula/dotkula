@@ -88,8 +88,9 @@ plugins=(
   sublime
   tmux
   pip
-  zsh-syntax-highlighting
   zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
