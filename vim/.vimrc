@@ -14,6 +14,27 @@ filetype plugin on
 " turn on basic syntax highlighting
 syntax on
 
+" vim-plug setup
+" --------------
+" Install vim-plug if not exists
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+	  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Run :PlugInstall on startup
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+	  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+
+Plug 'nanotech/jellybeans.vim'
+
+call plug#end()
 
 " Basic Options
 " -------------
