@@ -123,14 +123,14 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
     export PATH="/usr/local/opt/openjdk/bin:$PATH"
     export JAVA_HOME="/usr/local/opt/java/libexec/openjdk.jdk"
 
-    # pyenv
-    export PYENV_ROOT="$HOME/.pyenv"
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-		eval "$(pyenv init -)"
-
     # anaconda
     export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
   fi
+
+	# pyenv
+	export PYENV_ROOT="$HOME/.pyenv"
+	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
