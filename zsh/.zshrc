@@ -133,6 +133,7 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
 	eval "$(pyenv init -)"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
