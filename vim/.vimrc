@@ -33,6 +33,7 @@ endif
 call plug#begin()
 
 Plug 'nanotech/jellybeans.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
