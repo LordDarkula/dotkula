@@ -132,6 +132,10 @@ if [[ "$OSTYPE" = *"darwin"* ]]; then
 	eval "$(pyenv init -)"
 fi
 
+# cuda
+export PATH=${PATH}:/usr/local/cuda-13.0/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-13.0/compat
+
 export PATH="$HOME/.local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
