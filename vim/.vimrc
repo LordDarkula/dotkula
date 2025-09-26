@@ -126,8 +126,6 @@ endtry
 set incsearch
 " highlight / searches
 set hlsearch
-" Clear highlights only on the first Escape
-nnoremap <expr> <Esc> v:hlsearch ? ':nohlsearch<CR>' : '<Esc>'
 " ignore case in / searches
 set ignorecase
 
