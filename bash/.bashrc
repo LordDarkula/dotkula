@@ -187,24 +187,6 @@ alias cd....='cd ../../../'
 # Functions
 # ---------
 
-# Reassign ls to ls -a for additional information about files
-ls() {
-	if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
-		/bin/ls -a --color=auto "$@"
-	elif [[ "$OSTYPE" = *"darwin"* ]]; then
-		/bin/ls -a "$@"
-	fi
-}
-
-# Reassign cd to display new working directory after switching
-cd() {
-	if [[ "$OSTYPE" == "linux-gnu" ]]; then
-		builtin cd "$@"; /bin/ls --color=auto
-	elif [[ "$OSTYPE" =~ "darwin" ]]; then
-		builtin cd "$@"; /bin/ls
-	fi
-}
-
 # Upgrade package managers
 upgrade() {
   if [[ "$OSTYPE" = *"linux-gnu"* ]]; then
