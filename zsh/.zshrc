@@ -177,3 +177,8 @@ alias coruscant="cd /Volumes/Coruscant/"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+if command -v zoxide &> /dev/null
+then
+	eval "$(zoxide init zsh)"
+fi
